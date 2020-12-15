@@ -1,0 +1,50 @@
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+	<edmx:Reference Uri="/sap/opu/odata/sap/ZUI_FIN_VIMBULKPAYMENT/$metadata">
+		<edmx:Include Alias="Metadata" Namespace="cds_zsd_fin_vimbulkpayment"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://wiki.scn.sap.com/wiki/download/attachments/448470968/UI.xml?api=v2">
+		<edmx:Include Alias="UI" Namespace="com.sap.vocabularies.UI.v1"/>
+	</edmx:Reference>
+	<edmx:DataServices>
+		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="bulkpayment.annotation.annotation.cds_zsd_fin_vimbulkpayment">
+			<Annotations Target="Metadata.ZQ_FIN_VIMBulkPayment_ReadType">
+				<Annotation Term="UI.LineItem">
+					<Collection>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="DocumentNumber"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;documentNumberLabel}"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="DocumentDate"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;documentDateLabel}"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="CompanyCode"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;companyCodeLabel}"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="PaymentRefNum"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;paymentRefNumLabel}"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="GrossAmount"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;grossAmountLabel}"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="RequesterID"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;requesterIdLabel}"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="Status"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;statusLabel}"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="ErrorMessage"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;errorMessageLabel}"/>
+						</Record>
+					</Collection>
+				</Annotation>
+			</Annotations>
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

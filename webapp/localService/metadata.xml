@@ -1,0 +1,196 @@
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema Namespace="Z_PURCHASEORDERS_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+			<EntityType Name="PurchaseOrderItem" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="PoId"/>
+					<PropertyRef Name="ItemNo"/>
+				</Key>
+				<Property Name="PoId" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="POID" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="ProductId" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="PRODUCT_ID"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="ProductName" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="PRODUCT_NAME"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="ItemNo" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="ITEMNO" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="ItemQuantity" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="ITEMQUANTITY"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="CurrencyCode" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="CURRENCYCODE"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="GrossAmount" Type="Edm.Decimal" Nullable="false" Precision="10" Scale="2" sap:unicode="false" sap:label="GROSSAMOUNT"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="NetAmount" Type="Edm.Decimal" Nullable="false" Precision="10" Scale="2" sap:unicode="false" sap:label="NETAMOUNT"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="TaxAmount" Type="Edm.Decimal" Nullable="false" Precision="10" Scale="2" sap:unicode="false" sap:label="TAXAMOUNT"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<NavigationProperty Name="ProductToItems" Relationship="Z_PURCHASEORDERS_SRV.ProductToItems" FromRole="ToRole_ProductToItems"
+					ToRole="FromRole_ProductToItems"/>
+			</EntityType>
+			<EntityType Name="Supplier" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="SupplierId"/>
+				</Key>
+				<Property Name="SupplierId" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Character Field Length = 10"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="EmailAddress" Type="Edm.String" Nullable="false" MaxLength="255" sap:unicode="false" sap:label="Text" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="PhoneNumber" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Field length 10"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="FaxNumber" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Field length 10"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="WebAddress" Type="Edm.String" Nullable="false" MaxLength="255" sap:unicode="false" sap:label="Text" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="CompanyName" Type="Edm.String" Nullable="false" MaxLength="255" sap:unicode="false" sap:label="Text" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="Address" Type="Edm.String" Nullable="false" MaxLength="255" sap:unicode="false" sap:label="Text" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<NavigationProperty Name="PurchaseOrder" Relationship="Z_PURCHASEORDERS_SRV.SupplierToOrders" FromRole="FromRole_SupplierToOrders"
+					ToRole="ToRole_SupplierToOrders"/>
+			</EntityType>
+			<EntityType Name="Products" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="ProductId"/>
+				</Key>
+				<Property Name="ProductId" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Character Field Length = 10"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="Category" Type="Edm.String" Nullable="false" MaxLength="255" sap:unicode="false" sap:label="Text" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="ProductName" Type="Edm.String" Nullable="false" MaxLength="255" sap:unicode="false" sap:label="Text" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="WeightMeasure" Type="Edm.Decimal" Nullable="false" Precision="10" Scale="2" sap:unicode="false" sap:label="WEIGHT_MEASURE"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="WeightUnit" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="R/2 table" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="Price" Type="Edm.Decimal" Nullable="false" Precision="10" Scale="2" sap:unicode="false" sap:label="PRICE"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="CurrencyCode" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="R/2 table"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="Width" Type="Edm.Decimal" Nullable="false" Precision="10" Scale="2" sap:unicode="false" sap:label="WIDTH"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="Height" Type="Edm.Decimal" Nullable="false" Precision="10" Scale="2" sap:unicode="false" sap:label="HEIGHT"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="Depth" Type="Edm.Decimal" Nullable="false" Precision="10" Scale="2" sap:unicode="false" sap:label="DEPTH"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="DimensionUnit" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="DIMENSION_UNIT"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+			</EntityType>
+			<EntityType Name="PurchaseOrder" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="PoId"/>
+				</Key>
+				<Property Name="PoId" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Purchase Order ID"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="SupplierId" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Character Field Length = 10"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="CreatedBy" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="CREATEDBY" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="CreatedAt" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="CREATEDAT" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="ChangedBy" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="CHANGEDBY" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="ChangedAt" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="CHANGEDAT" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="CurrencyCode" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="CURRENCYCODE"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="GrossAmount" Type="Edm.Decimal" Nullable="false" Precision="10" Scale="2" sap:unicode="false" sap:label="GROSSAMOUNT"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="NetAmount" Type="Edm.Decimal" Nullable="false" Precision="10" Scale="2" sap:unicode="false" sap:label="NETAMOUNT"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="TaxAmount" Type="Edm.Decimal" Nullable="false" Precision="10" Scale="2" sap:unicode="false" sap:label="TAXAMOUNT"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="LifecycleStatus" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="LIFECYCLESTATUS"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="ApprovalStatus" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="APPROVALSTATUS"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="ConfirmStatus" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="CONFIRMSTATUS"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="OrderingStatus" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="ORDERINGSTATUS"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="InvoicingStatus" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="INVOICINGSTATUS"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="OverallStatus" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="OVERALLSTATUS"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<NavigationProperty Name="OrderToItems" Relationship="Z_PURCHASEORDERS_SRV.OrderToItems" FromRole="FromRole_OrderToItems"
+					ToRole="ToRole_OrderToItems"/>
+				<NavigationProperty Name="SupplierToOrders" Relationship="Z_PURCHASEORDERS_SRV.SupplierToOrders" FromRole="ToRole_SupplierToOrders"
+					ToRole="FromRole_SupplierToOrders"/>
+			</EntityType>
+			<ComplexType Name="Return">
+				<Property Name="Message" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/>
+			</ComplexType>
+			<Association Name="OrderToItems" sap:content-version="1">
+				<End Type="Z_PURCHASEORDERS_SRV.PurchaseOrder" Multiplicity="1" Role="FromRole_OrderToItems"/>
+				<End Type="Z_PURCHASEORDERS_SRV.PurchaseOrderItem" Multiplicity="*" Role="ToRole_OrderToItems"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_OrderToItems">
+						<PropertyRef Name="PoId"/>
+					</Principal>
+					<Dependent Role="ToRole_OrderToItems">
+						<PropertyRef Name="PoId"/>
+					</Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="ProductToItems" sap:content-version="1">
+				<End Type="Z_PURCHASEORDERS_SRV.Products" Multiplicity="1" Role="FromRole_ProductToItems"/>
+				<End Type="Z_PURCHASEORDERS_SRV.PurchaseOrderItem" Multiplicity="1" Role="ToRole_ProductToItems"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_ProductToItems">
+						<PropertyRef Name="ProductId"/>
+					</Principal>
+					<Dependent Role="ToRole_ProductToItems">
+						<PropertyRef Name="ProductId"/>
+					</Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="SupplierToOrders" sap:content-version="1">
+				<End Type="Z_PURCHASEORDERS_SRV.Supplier" Multiplicity="1" Role="FromRole_SupplierToOrders"/>
+				<End Type="Z_PURCHASEORDERS_SRV.PurchaseOrder" Multiplicity="*" Role="ToRole_SupplierToOrders"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_SupplierToOrders">
+						<PropertyRef Name="SupplierId"/>
+					</Principal>
+					<Dependent Role="ToRole_SupplierToOrders">
+						<PropertyRef Name="SupplierId"/>
+					</Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<EntityContainer Name="Z_PURCHASEORDERS_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+				<EntitySet Name="PurchaseOrderItemSet" EntityType="Z_PURCHASEORDERS_SRV.PurchaseOrderItem" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+				<EntitySet Name="SupplierSet" EntityType="Z_PURCHASEORDERS_SRV.Supplier" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+					sap:pageable="false" sap:content-version="1"/>
+				<EntitySet Name="ProductsSet" EntityType="Z_PURCHASEORDERS_SRV.Products" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+					sap:pageable="false" sap:content-version="1"/>
+				<EntitySet Name="PurchaseOrderSet" EntityType="Z_PURCHASEORDERS_SRV.PurchaseOrder" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+				<AssociationSet Name="OrderToItemsSet" Association="Z_PURCHASEORDERS_SRV.OrderToItems" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1">
+					<End EntitySet="PurchaseOrderSet" Role="FromRole_OrderToItems"/>
+					<End EntitySet="PurchaseOrderItemSet" Role="ToRole_OrderToItems"/>
+				</AssociationSet>
+				<AssociationSet Name="SupplierToOrdersSet" Association="Z_PURCHASEORDERS_SRV.SupplierToOrders" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1">
+					<End EntitySet="SupplierSet" Role="FromRole_SupplierToOrders"/>
+					<End EntitySet="PurchaseOrderSet" Role="ToRole_SupplierToOrders"/>
+				</AssociationSet>
+				<AssociationSet Name="ProductToItemsSet" Association="Z_PURCHASEORDERS_SRV.ProductToItems" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1">
+					<End EntitySet="ProductsSet" Role="FromRole_ProductToItems"/>
+					<End EntitySet="PurchaseOrderItemSet" Role="ToRole_ProductToItems"/>
+				</AssociationSet>
+				<FunctionImport Name="PurchaseOrderApproval" ReturnType="Z_PURCHASEORDERS_SRV.Return" m:HttpMethod="POST"
+					sap:action-for="Z_PURCHASEORDERS_SRV.PurchaseOrder">
+					<Parameter Name="PoId" Type="Edm.String" Mode="In" MaxLength="10"/>
+					<Parameter Name="Status" Type="Edm.String" Mode="In" MaxLength="10"/>
+				</FunctionImport>
+			</EntityContainer>
+			<atom:link rel="self" href="http://vappsrv23.vesta.rizing.com:8000/sap/opu/odata/sap/Z_PURCHASEORDERS_SRV/$metadata"
+				xmlns:atom="http://www.w3.org/2005/Atom"/>
+			<atom:link rel="latest-version" href="http://vappsrv23.vesta.rizing.com:8000/sap/opu/odata/sap/Z_PURCHASEORDERS_SRV/$metadata"
+				xmlns:atom="http://www.w3.org/2005/Atom"/>
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

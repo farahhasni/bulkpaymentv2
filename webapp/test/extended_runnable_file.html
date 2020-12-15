@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>BulkPayment</title>
+
+	<script id="sap-ui-bootstrap" src="../resources/sap-ui-core.js" data-sap-ui-theme="sap_fiori_3" data-sap-ui-resourceroots="{
+				&quot;com.ee.BulkPayment&quot;: &quot;../&quot;
+			}" data-sap-ui-oninit="module:com/ee/BulkPayment/test/initFlpSandbox" data-sap-ui-compatversion="edge" data-sap-ui-async="true" data-sap-ui-frameoptions="allow">
+	</script>
+	
+<script>
+var bRunWithMock = true;
+var sRunWithMock = jQuery.sap.getUriParameters().get('run-with-mock');
+if (sRunWithMock === 'false') {
+bRunWithMock = false;
+}
+if (bRunWithMock) {
+jQuery.sap.require('sap.ui.core.util.MockServer');
+var uri = '/here/goes/your/serviceurl/';
+var oMock = new sap.ui.core.util.MockServer({rootUri : uri});
+var _sAppModulePath = "com.ee.BulkPayment/";
+var sMetadataPath = "localService/metadata.xml";
+var sMetadataUrl = jQuery.sap.getModulePath(_sAppModulePath) + "/" + sMetadataPath;
+oMock.simulate(sMetadataUrl);
+oMock.start();
+	sap.ui.getCore().attachInit(function () {
+		console.log('Running in demo mode with mock data.');
+	});
+}
+</script>
+
+
+
+</head>
+<body class="sapUiBody" id="content">
+</body>
+</html>

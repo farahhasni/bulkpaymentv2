@@ -1,0 +1,41 @@
+<mvc:View controllerName="com.ee.BulkPayment.controller.BulkPayment" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:semantic="sap.f.semantic" xmlns:smarttable="sap.ui.comp.smarttable" xmlns:table="sap.ui.table" xmlns:core="sap.ui.core"
+	xmlns:unified="sap.ui.unified" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form"
+	xmlns:data="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+	<semantic:SemanticPage id="idUploadPage" headerPinnable="false" toggleHeaderOnTitleClick="false" showFooter="true">
+		<semantic:titleHeading>
+			<Title text="{i18n>headerTitle}" level="H2"/>
+		</semantic:titleHeading>
+		<semantic:content>
+			<VBox id="ActionVbox" height="100%">
+				<Panel>
+					<FlexBox id="idFileUploaderFlexBox" alignItems="Center" height="4rem" justifyContent="Center">
+						<unified:FileUploader id="idFileUploader" name="excelUpload" width="450px" tooltip="{i18n>SelectFile}" change=".onChangeFileUploader"
+							icon="sap-icon://open-folder" class="sapUiSmallMarginEnd" uploadComplete=".handleUploadComplete" sendXHR="true"
+							sameFilenameAllowed="true" uploadOnChange="false" useMultipart="false" placeholder="{i18n>fileUploadLabel}" fileType="csv,xlsx,xls"/>
+					</FlexBox>
+				</Panel>
+				<VBox class="sapUiMediumMarginBeginEnd sapUiTinyMarginTopBottom" id="MessageStripVbox" visible="false"/>
+				<smarttable:SmartTable id="idUploadSmartTable" tableType="Table" showRowCount="true"
+					useExportToExcel="true" enableAutoBinding="false" useTablePersonalisation="true" class="sapFioriListReportTable" entitySet="ZQ_FIN_VIMBulkPayment_Read"
+					smartFilterId="smartFilterBar" useVariantManagement="false" height="100%" persistencyKey="SmartTable.Key"
+					initialNoDataText="{i18n>uploadTableNoDataLabel}">
+					<smarttable:layoutData>
+						<FlexItemData growFactor="1"/>
+					</smarttable:layoutData>
+					<table:Table selectionMode="None" visibleRowCountMode="Interactive">
+						<table:rowSettingsTemplate>
+							<table:RowSettings highlight="{path:'Status', formatter:'._formatRowHighlight'}"/>
+						</table:rowSettingsTemplate>
+					</table:Table>
+				</smarttable:SmartTable>
+			</VBox>
+		</semantic:content>
+		<!-- Custom Footer Content-->
+		<semantic:footerCustomActions>
+			<Button text="{i18n>downloadTemplateLabel}"  type="Emphasized" visible="{mainView>/fileUploaderVisibleFlag}" press=".onPressDownloadTemplate"/>
+			<Button text="{i18n>submitLabel}"  type="Emphasized" visible="{mainView>/fileUploaderVisibleFlag}" press=".onPressSubmit"/>
+			<Button text="{i18n>cancelLabel}" press=".onPressCancel"/>
+		</semantic:footerCustomActions>
+	</semantic:SemanticPage>
+</mvc:View>
